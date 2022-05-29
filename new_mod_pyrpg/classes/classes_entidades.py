@@ -52,4 +52,5 @@ class Enemigos(Entidades):
         self.min_coin = a["coin_min"]
         lista_enemigos.append(self)
 
-
+class Boss(Enemigos):
+    pass
