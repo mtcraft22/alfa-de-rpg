@@ -1,0 +1,10 @@
+{
+    "nombre":"goblin_fuerte",
+    "vida": 10,
+    "ataque": 1.8,
+    "defensa": 0.75,
+    "planta": 1,
+    "peso": 10,
+    "coin_max":10,
+    "coin_min":3
+}
