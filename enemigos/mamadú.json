@@ -1,0 +1,10 @@
+{
+    "nombre":"mamadú",
+    "vida": 50,
+    "ataque": 5,
+    "defensa": 0.1,
+    "planta": 5,
+    "peso": 10,
+    "coin_max":200,
+    "coin_min":50
+}

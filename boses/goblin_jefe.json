@@ -1,0 +1,12 @@
+{
+    "nombre":"goblin_boss",
+    "vida": 15,
+    "ataque": 4,
+    "defensa": 0.75,
+    "planta": 1,
+    "peso": 10,
+    "coin_max":50,
+    "coin_min":48,
+    "habilidad":"veneno"
+    
+}

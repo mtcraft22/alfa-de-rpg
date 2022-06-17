@@ -1,0 +1,10 @@
+{
+    "nombre":"goblin",
+    "vida": 5,
+    "ataque": 1.5,
+    "defensa": 0.5,
+    "planta": 0,
+    "peso": 10,
+    "coin_max":2,
+    "coin_min":2
+}

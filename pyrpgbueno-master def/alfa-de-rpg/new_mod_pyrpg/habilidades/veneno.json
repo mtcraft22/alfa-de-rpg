@@ -1,8 +1,0 @@
-{
-    "nombre":"veneno",
-    "probabilidad":33, 
-    "precision":19,
-    "puntosafectados":3,
-    "turnos_max":3,
-    "turnos_min":2
-}
