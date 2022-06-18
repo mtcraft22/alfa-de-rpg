@@ -1,0 +1,16 @@
+{
+    "nombre":"pralisis",
+    "probabilidad":33, 
+    "precision":19,
+    "puntosafectados":3,
+    "turnos_max":null,
+    "turnos_min":null,
+    "paralisis":{
+        "turnos":3,
+        "confuncion":{
+            "turnos_min":3,
+            "turnos_max":5,
+            "daño":5
+        }
+    }
+}

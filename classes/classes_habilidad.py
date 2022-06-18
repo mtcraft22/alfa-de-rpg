@@ -17,6 +17,7 @@ class habilidades():
         self.puntosafectados = a["puntosafectados"]
         self.turnos_max = a["turnos_max"]
         self.turnos_min = a["turnos_min"]
+        self.paralisis = a["paralisis"]
         habilidades_classes.append(self)
     def calc_turnos (self):
         a=random.randint(self.turnos_min, self.turnos_max)
@@ -40,7 +41,6 @@ for i in os.listdir(f"{os.getcwd()}"):
     with open(f"{i}", "r") as enem:
         habilidades_dic = json.loads(enem.read())
     habilidad_class = habilidades(habilidades_dic) 
-print(habilidades_classes)
 os.chdir("./..")
 '''for i in range(100):
     print(i,"aaa\n")

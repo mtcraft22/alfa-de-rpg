@@ -31,7 +31,7 @@ amarillo = CreadorDeColor(255, 255, 0, False)
 amarillo.generate_color()
 verde = CreadorDeColor(23, 200, 23, False)
 verde.generate_color()
-
+lila = CreadorDeColor(59, 33, 112, False)
 '''
     aleatorio = CreadorDeColor(134, 34, 173, False)  # ejemplo de declaración de color (r , g , b , booleano)
     aleatorio.generate_color()  # método para generar el color

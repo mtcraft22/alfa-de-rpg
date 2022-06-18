@@ -28,7 +28,7 @@ lista_enemigos_completa=enemigos_classes
 os.chdir("./..")
 # declaramos las entidades que combaten
 
-J = entidad.Jugador(0, "por defecto", 2, 1, 20)
+J = entidad.Jugador(5, "Juan Carlos", 2, 1, 20)
 
 
 # declaramos los bosses

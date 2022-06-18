@@ -4,5 +4,6 @@
     "precision":19,
     "puntosafectados":3,
     "turnos_max":3,
-    "turnos_min":2
+    "turnos_min":2,
+    "paralisis":null
 }
