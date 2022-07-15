@@ -21,6 +21,7 @@ def actualizar_pantalla(escenario, enemigo, jugador, comentario):
         pintar_vara_vida.draw_hp_bar(enemigo.vida_max, enemigo.vida_act, enemigo.nombre,colores_e_estilos.verde,colores_e_estilos.amarillo,colores_e_estilos.rojo)
         print("----------------------------------------------------------------")
         print(f" Piso: {escenario.piso}")
+        print(f" Pasta: {jugador.dinero}")
         print("----------------------------------------------------------------")
         print(" Aciones: ")
         a = 1
@@ -50,6 +51,16 @@ def actualizar_pantalla(escenario, enemigo, jugador, comentario):
         print(f"{comentario}")
         print("----------------------------------------------------------------")
         
+        a = 1
+        for i in escenario.aciones:
+            print(" ", a, ". ", i)
+            a += 1
+    elif escenario.nombre == "Habilidades":
+        print("----------------------------------------------------------------")
+        escenario.mostrar_habilidades()
+        print("----------------------------------------------------------------")
+        print(f"{comentario}")
+        print("----------------------------------------------------------------")
         a = 1
         for i in escenario.aciones:
             print(" ", a, ". ", i)

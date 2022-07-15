@@ -1,16 +1,29 @@
 {
-    "nombre":"pralisis",
-    "probabilidad":33, 
-    "precision":19,
-    "puntosafectados":3,
-    "turnos_max":null,
-    "turnos_min":null,
-    "paralisis":{
-        "turnos":3,
-        "confuncion":{
-            "turnos_min":3,
-            "turnos_max":5,
-            "daño":5
+    "nombre":"paralisis",
+    "config":{
+        "ataque":{
+            "probabilidad":50, 
+            "daño":0
+        },
+        "turnos":{
+            "max":5,
+            "min":2  
         }
+    
+        
+    },
+    "estados":{
+        "envenena":false,
+        "paralisis":true,
+        "confunde":false,
+        "quema":false
+    },
+    "aciones": {
+        "Paraliza":true,
+        "Roba_Objecto":false,
+        "Canviar_Objecto":false,
+        "Roba_Habilidad":false,
+        "Canviar_Habilidad":false
+
     }
 }

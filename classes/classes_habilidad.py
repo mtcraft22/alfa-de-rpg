@@ -12,35 +12,24 @@ print(lista_habilidades_json)
 class habilidades():
     def __init__(self,a):
         self.nombre = a["nombre"]
-        self.probabilidad = a["probabilidad"]
-        self.precisión = a["precision"]
-        self.puntosafectados = a["puntosafectados"]
-        self.turnos_max = a["turnos_max"]
-        self.turnos_min = a["turnos_min"]
-        self.paralisis = a["paralisis"]
-        habilidades_classes.append(self)
-    def calc_turnos (self):
-        a=random.randint(self.turnos_min, self.turnos_max)
-        print(a)
-        return a
-    def calc_acierto(self):
-        a=[]
-        for i in range(self.precisión):
-            a.append(True)
-        for b in range(100-self.precisión):
-            a.append(False)
-        print("prob_arci",random.choice(a))
-    def calc_probalilidad(self):
-        p=[]
-        for i in range(self.probabilidad):
-            p.append(True)
-        for b in range(100-self.probabilidad):
-            p.append(False)
-        print("prob_lan",random.choice(p))
+        self.config = a["config"]
+        self.estados = a["estados"]
+        self.aciones = a["aciones"]
+        
+        
+       
+    def ataca(self):
+        self.ataca=[]
+        for i in range(self.config["ataque"]["probabilidad"]):
+            self.ataca.append(True)
+        for i in range(100-self.config["ataque"]["probabilidad"]):
+            self.ataca.append(False)
+        return random.choice(self.ataca)
 for i in os.listdir(f"{os.getcwd()}"):
-    with open(f"{i}", "r") as enem:
+    with open(f"{i}", "r",encoding="utf-8") as enem:
         habilidades_dic = json.loads(enem.read())
-    habilidad_class = habilidades(habilidades_dic) 
+    habilidad_class = habilidades(habilidades_dic)
+    print(habilidad_class.nombre,habilidad_class.ataca())
 os.chdir("./..")
 '''for i in range(100):
     print(i,"aaa\n")

@@ -1,24 +1,29 @@
 import time
 import random
-
-
-
-
+import pickle
+import os
+import saves_managment  
 import declaaraciones
 import lista_enemigos_por_nivel
 import pintar_pantalla
 import indicar_acion
 from classes.classes_objetos import lista_items as productos
-
-declaaraciones.J.dinero = 1232312312313
-
+if len(saves_managment.lista_ficheros)!=0:
+    os.chdir("./saves")
+    Cargado=open(saves_managment.selecionpartida(),"rb")
+    Jugador_info=pickle.load(Cargado)
+    declaaraciones.J.dinero=Jugador_info.dinero
+    declaaraciones.J.mochila=Jugador_info.mochila
+    os.chdir("./..")
+else:
+    print("No se cargo nigun fichero")
 def combate():
     
     ene = random.choice(lista_enemigos_por_nivel.sacar_lista_nivel(declaaraciones.com.piso))
-        
+    declaaraciones.mochila_es.Items_ala_venta=declaaraciones.J.mochila 
     while declaaraciones.J.vida_act > 0 and ene.vida_act > 0:
         
-        pintar_pantalla.actualizar_pantalla(declaaraciones.com, ene, declaaraciones.J, f" Inicio de combate")
+        pintar_pantalla.actualizar_pantalla(declaaraciones.com, ene, declaaraciones.J, f" {declaaraciones.J.mochila}")
         acion = indicar_acion.preguntar_acion(declaaraciones.com.aciones)
         if acion == 0:
             declaaraciones.J.atacar(ene)
@@ -53,7 +58,31 @@ def combate():
                 except IndexError:
                     pintar_pantalla.actualizar_pantalla(declaaraciones.mochila_es,None, declaaraciones.J,"Introduce un valor correcto:")  
             continue
+        elif acion == 3:
+           
+            pintar_pantalla.actualizar_pantalla(declaaraciones.habilidades,None, declaaraciones.J,"Mi mochila")
+            item_us=indicar_acion.preguntar_acion(declaaraciones.habilidades.aciones, "Introduce ID de producto a usar o enter para salir ")
+            if type(item_us) != int:
+                continue
+            try:
+                declaaraciones.J.mochila[item_us].usar(declaaraciones.J)
+                pintar_pantalla.actualizar_pantalla(declaaraciones.habilidades,None, declaaraciones.J,f"Usastes {declaaraciones.J.mochila[item_us].nombre}")
+                declaaraciones.J.mochila.pop(item_us)
+            except IndexError:
+                pintar_pantalla.actualizar_pantalla(declaaraciones.habilidades,None, declaaraciones.J,"Introduce un valor correcto:")
             
+            while item_us> len(declaaraciones.J.mochila):
+                pintar_pantalla.actualizar_pantalla(declaaraciones.habilidades,None, declaaraciones.J,"Mi mochila")
+                item_us=indicar_acion.preguntar_acion(declaaraciones.habilidades.aciones, "Introduce ID de producto a usar o enter para salir ")
+                if type(item_us) != int:
+                    break
+                try:
+                    declaaraciones.J.mochila[item_us].usar(declaaraciones.J)
+                    pintar_pantalla.actualizar_pantalla(declaaraciones.habilidades,None, declaaraciones.J,f"Usastes {declaaraciones.J.mochila[item_us].nombre}")
+                    declaaraciones.J.mochila.pop(item_us)
+                except IndexError:
+                    pintar_pantalla.actualizar_pantalla(declaaraciones.habilidades,None, declaaraciones.J,"Introduce un valor correcto:")  
+            continue    
     pintar_pantalla.actualizar_pantalla(declaaraciones.final, ene, declaaraciones.J,
                                         f" final combate, llendo al hub ")
     
@@ -66,8 +95,8 @@ def combate():
         ene.vida_act = ene.vida_max
         pintar_pantalla.actualizar_pantalla(declaaraciones.final, ene, declaaraciones.J,f"Recivistes {pasta} coin/s ")
         time.sleep(0.5)
+    
     selecionar()
-
 
 def comprar():
     pintar_pantalla.actualizar_pantalla(declaaraciones.tienda, None, declaaraciones.J, "Bienvenido al baludaque")
@@ -120,4 +149,26 @@ def selecionar():
         comprar()
     if acion == 1:
         combate()
+    if acion == 3:
+        os.chdir("./saves")
+        id=0
+        for i in saves_managment.lista_ficheros:
+            id +=1
+            print(f"{id}. {i}")
+        
+        try:
+            fichero=int(input("Indique numero del archivo a sobreescribir o Enter para archivo nuevo "))
+        except:
+            fichero=input("Indique nombre de nuevo archivo ")
+        if type(fichero)==int:
+            
+            fichero_sel=saves_managment.lista_ficheros[fichero-1]
+            data=open(f"{fichero_sel}","wb")
+            pickle.dump(declaaraciones.J,data)
+             
+        else:
+            data=open(f"{fichero}.prpg","x")
+            with open(f"{fichero}.prpg","wb") as data:
+                pickle.dump(declaaraciones.J, data)
+        os.chdir("./..")
 combate()

@@ -1,9 +1,29 @@
 {
     "nombre":"veneno_2",
-    "probabilidad":33, 
-    "precision":99,
-    "puntosafectados":5,
-    "turnos_max":10,
-    "turnos_min":5,
-    "paralisis":null
+    "config":{
+        "ataque":{
+            "probabilidad":20, 
+            "daño":12
+        },
+        "turnos":{
+            "max":9,
+            "min":2  
+        }
+        
+        
+    },
+    "estados":{
+        "envenena":true,
+        "paralisis":false,
+        "confunde":false,
+        "quema":false
+    },
+    "aciones": {
+        "Paraliza":false,
+        "Roba_Objecto":false,
+        "Canviar_Objecto":false,
+        "Roba_Habilidad":false,
+        "Canviar_Habilidad":false
+
+    }
 }

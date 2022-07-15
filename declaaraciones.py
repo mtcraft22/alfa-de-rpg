@@ -48,7 +48,7 @@ for i in os.listdir(f"{os.getcwd()}"):
     enemigo_class = entidad.Boss(boses_dic)
     boses_classes.append(enemigo_class)
 for i in range (len(boses_classes)):
-    print(boses_classes[i].habilidad.nombre)
+    print(boses_classes[i].habilidad)
     
 
 os.chdir("./..")
@@ -62,8 +62,9 @@ escudo = items.Escudo(5, 55, "Te añade escudo en el combate")
 lista_enemigos_completa = entidad.lista_enemigos
 
 # declaramos los escenarios
-Hub = escenarios.Escenarios(nombre="Hub", aciones=["Tienda", "Combate","Salir"])
+Hub = escenarios.Escenarios(nombre="Hub", aciones=["Tienda", "Combate","Salir","Guardar"])
 com = escenarios.Combate(nombre="combate", aciones=["atacar", "defender", "objecto", "habilidad"])
 tienda = escenarios.Tienda(items=items.lista_items, nombre="tienda", aciones=["comprar", "vender", "robar","ir hub"])
 final = escenarios.Combate(nombre="final", aciones=[])
-mochila_es= escenarios.Tienda(items=J.mochila, nombre="mochila", aciones=[])
+mochila_es = escenarios.Tienda(items=J.mochila, nombre="mochila", aciones=[])
+habilidades = escenarios.Tienda(items=J.habilidades, nombre="Habilidades", aciones=[])

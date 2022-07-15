@@ -31,15 +31,17 @@ class Jugador(Entidades):
         self.mana_max = escudo
         self.mana_act = escudo
         self.dinero = 0
+        for i in habilidades_classes:
+            self.habilidades.append(i)
     def mostrar_habilidades(self):
         id = 0
         tabla_habilidades.clear()
         tabla_habilidades.field_names = ["id", "Nombre", "Puntos de afectación"]
-        for i in self.Items_ala_venta:
+        for a in self.habilidades:
             id += 1
-            tabla_habilidades.add_row([f"{id}", f"{i.nombre}", f"{i.suma}"])
+            tabla_habilidades.add_row([f"{id}", f"{a.nombre}", f"{a.paralisis}"])
         print(tabla_habilidades)
-    def mostrar_items(self):
+    def mostrar_item(self):
         id = 0
         tabla.clear()
         tabla.field_names = ["id", "Nombre", "Puntos de afectación"]
